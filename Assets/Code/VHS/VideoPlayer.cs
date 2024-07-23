@@ -3,21 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class VideoPlayer : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+{ 
+    
 
     public void InsertTape(VideoTapeSO tapeData)
     {
         Debug.Log("Put in video tape: " + tapeData.gameName);
+
+        GameLauncher.Instance.LaunchGame(tapeData);
     }
 }
