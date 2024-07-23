@@ -15,6 +15,8 @@ public class PickUpScript : MonoBehaviour
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
 
+    private SetOutline currentOutline = null;
+
     //Reference to script which includes mouse movement of player (looking around)
     //we want to disable the player looking around when rotating the object
     //example below 
@@ -25,6 +27,40 @@ public class PickUpScript : MonoBehaviour
 
         //mouseLookScript = player.GetComponent<MouseLookScript>();
     }
+
+    private void FixedUpdate()
+    {
+        RaycastHit ray;
+        Physics.Raycast(transform.position + transform.TransformDirection(Vector3.forward), transform.TransformDirection(Vector3.forward), out ray, pickUpRange);
+
+        if (heldObj == null) //if currently not holding anything
+        {
+            if (ray.transform.gameObject.TryGetComponent(out TapeBox box))
+            {
+                currentOutline = box.GetComponent<SetOutline>();
+                currentOutline.Show(true);
+            }
+            else
+            {
+                if(currentOutline)
+                    currentOutline.Show(false);
+            }
+        }
+        else
+        {
+            if (ray.transform.gameObject.TryGetComponent(out VideoPlayer vhs))
+            {
+                currentOutline = vhs.GetComponent<SetOutline>();
+                currentOutline.Show(true);
+            }
+            else
+            {
+                if (currentOutline)
+                    currentOutline.Show(false);
+            }
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0)) //change E to whichever key you want to press to pick up
@@ -47,7 +83,7 @@ public class PickUpScript : MonoBehaviour
             }
             else
             {
-                if (Physics.Raycast(transform.position + transform.TransformDirection(Vector3.forward), transform.TransformDirection(Vector3.forward), out hit, pickUpRange + 2))
+                if (Physics.Raycast(transform.position + transform.TransformDirection(Vector3.forward), transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
                 {
                     Debug.Log(hit.transform.name);
                     //make sure pickup tag is attached

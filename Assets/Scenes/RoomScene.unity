@@ -1181,6 +1181,8 @@ GameObject:
   - component: {fileID: 1303215281}
   - component: {fileID: 1303215280}
   - component: {fileID: 1303215279}
+  - component: {fileID: 1303215285}
+  - component: {fileID: 1303215286}
   m_Layer: 0
   m_Name: Cube_1
   m_TagString: PickUp
@@ -1314,6 +1316,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303215285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303215278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.3890174, g: 0.8411781, b: 0.8867924, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &1303215286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303215278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77c7348b10824edea6a2f47518190eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1402196841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,7 +1627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1549932562
 Transform:
   m_ObjectHideFlags: 0
@@ -1675,6 +1707,8 @@ GameObject:
   - component: {fileID: 1562454359}
   - component: {fileID: 1562454363}
   - component: {fileID: 1562454364}
+  - component: {fileID: 1562454365}
+  - component: {fileID: 1562454366}
   m_Layer: 0
   m_Name: Cube
   m_TagString: PickUp
@@ -1808,6 +1842,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tapeData: {fileID: 11400000, guid: 7badbadcc397e40edaacae1a69b01caa, type: 2}
+--- !u!114 &1562454365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562454358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.3890174, g: 0.8411781, b: 0.8867924, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &1562454366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562454358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77c7348b10824edea6a2f47518190eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1603865423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2798,6 +2862,8 @@ GameObject:
   - component: {fileID: 543450652311918896}
   - component: {fileID: 919132148394476427}
   - component: {fileID: 919132148394476428}
+  - component: {fileID: 919132148394476429}
+  - component: {fileID: 919132148394476430}
   m_Layer: 0
   m_Name: VHS_Player
   m_TagString: Untagged
@@ -2838,6 +2904,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.2, z: 0.56069726}
   m_Center: {x: 0, y: 0.05, z: 0}
+--- !u!114 &919132148394476429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148394476426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.32694018, g: 0.8129915, b: 0.8773585, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &919132148394476430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148394476426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77c7348b10824edea6a2f47518190eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &956034996048953803
 Transform:
   m_ObjectHideFlags: 0
