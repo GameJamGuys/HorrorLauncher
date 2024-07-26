@@ -8,14 +8,24 @@ public class TapeBox : MonoBehaviour
 
     public VideoTapeSO TapeData => _tapeData;
 
-    void Start()
+    SetOutline setOutline;
+
+    [SerializeField]
+    TapePickUp tapePickUp;
+
+    private void Start()
     {
-        
+        setOutline = GetComponent<SetOutline>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseEnter()
     {
-        
+        if(!tapePickUp.isHold)
+            setOutline.Show(true);
+    }
+
+    private void OnMouseExit()
+    {
+        setOutline.Show(false);
     }
 }

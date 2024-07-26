@@ -1,10 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpScript : MonoBehaviour
+public class TapePickUp : MonoBehaviour
 {
-    public GameObject player;
     public Transform holdPos;
     //if you copy from below this point, you are legally required to like the video
     public float throwForce = 500f; //force at which the object is thrown at
@@ -16,97 +15,44 @@ public class PickUpScript : MonoBehaviour
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
 
-    private SetOutline currentOutline = null;
-
     //Reference to script which includes mouse movement of player (looking around)
     //we want to disable the player looking around when rotating the object
     //example below
-    public bool staticCamera;
-    public FirstPersonController mouseLookScript;
-    float originalSenseValue;
 
     float XaxisRotation;
     float YaxisRotation;
 
-    Vector3 startTapeRotation = new Vector3(0, -130, -100);
+    public bool isHold;
+
+    Vector3 startTapeRotation = new Vector3(170, 180, 90);
 
     void Start()
     {
         LayerNumber = LayerMask.NameToLayer("HoldLayer"); //if your holdLayer is named differently make sure to change this ""
 
-        if(!staticCamera)
-            originalSenseValue = mouseLookScript.mouseSensitivity;
-        //mouseLookScript = player.GetComponent<MouseLookScript>();
-    }
-
-    private void FixedUpdate()
-    {
-        RaycastHit ray;
-        Physics.Raycast(transform.position + transform.TransformDirection(Vector3.forward), transform.TransformDirection(Vector3.forward), out ray, pickUpRange);
-
-        if (heldObj == null) //if currently not holding anything
-        {
-
-            if (ray.transform.gameObject.TryGetComponent(out TapeBox box))
-            {
-                if (currentOutline == box.GetComponent<SetOutline>()) return;
-
-                if (currentOutline && currentOutline != box.GetComponent<SetOutline>())
-                    currentOutline.Show(false);
-
-                currentOutline = box.GetComponent<SetOutline>();
-                currentOutline.Show(true);
-            }
-            else
-            {
-                if(currentOutline)
-                    currentOutline.Show(false);
-
-                currentOutline = null;
-            }
-        }
-        else
-        {
-            if (ray.transform.gameObject.TryGetComponent(out VideoPlayer vhs))
-            {
-                currentOutline = vhs.GetComponent<SetOutline>();
-                currentOutline.Show(true);
-            }
-            else
-            {
-                if (currentOutline)
-                    currentOutline.Show(false);
-            }
-        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) //change E to whichever key you want to press to pick up
+
+        if (Input.GetMouseButtonDown(0)) //change E to whichever key you want to press to pick up
         {
-            //perform raycast to check if player is looking at object within pickuprange
-            RaycastHit hit;
-            if (heldObj == null) //if currently not holding anything
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hitInfo))
             {
-                //perform raycast to check if player is looking at object within pickuprange
-                //RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
+                Debug.Log("Hit " + hitInfo.transform.name);
+                if (heldObj == null) //if currently not holding anything
                 {
-                    Debug.Log(hit.transform.name);
-                    //make sure pickup tag is attached
-                    if (hit.transform.gameObject.TryGetComponent(out TapeBox box))
+                    if (hitInfo.transform.gameObject.TryGetComponent(out TapeBox box))
                     {
-                        PickUpObject(hit.transform.gameObject);
+                        PickUpObject(hitInfo.transform.gameObject);
+                        Debug.Log("Pick up " + box.TapeData.gameName);
                     }
                 }
-            }
-            else
-            {
-                if (Physics.Raycast(transform.position + transform.TransformDirection(Vector3.forward), transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
+                else
                 {
-                    Debug.Log(hit.transform.name);
-                    //make sure pickup tag is attached
-                    if (hit.transform.gameObject.TryGetComponent(out VideoPlayer vhs))
+                    if (hitInfo.transform.gameObject.TryGetComponent(out VideoPlayer vhs))
                     {
                         VideoTapeSO data = heldObj.GetComponent<TapeBox>().TapeData;
                         vhs.InsertTape(data);
@@ -114,13 +60,15 @@ public class PickUpScript : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1))
         {
             if (heldObj != null && canDrop == true)
             {
                 StopClipping(); //prevents object from clipping through walls
-                //DropObject();
-                ThrowObject();
+                DropObject();
+
+                isHold = false;
+                //ThrowObject();
             }
         }
 
@@ -148,14 +96,15 @@ public class PickUpScript : MonoBehaviour
 
             heldObj.transform.Rotate(startTapeRotation);
 
+            isHold = true;
             //make sure object doesnt collide with player, it can cause weird bugs
-            Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+            //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         }
     }
     void DropObject()
     {
         //re-enable collision with player
-        Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+        //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.layer = 0; //object assigned back to default layer
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null; //unparent object
@@ -169,19 +118,12 @@ public class PickUpScript : MonoBehaviour
     void RotateObject()
     {
 
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            if(!staticCamera)
-                mouseLookScript.mouseSensitivity = originalSenseValue;
-        }
 
         if (Input.GetKey(KeyCode.R))//hold R key to rotate, change this to whatever key you want
         {
             canDrop = false; //make sure throwing can't occur during rotating
 
-            //disable player being able to look around
-            if (!staticCamera)
-                mouseLookScript.mouseSensitivity = 0f;
+            
 
             XaxisRotation = Input.GetAxis("Mouse X") * rotationSensitivity;
             YaxisRotation = Input.GetAxis("Mouse Y") * rotationSensitivity;
@@ -212,7 +154,7 @@ public class PickUpScript : MonoBehaviour
     void ThrowObject()
     {
         //same as drop function, but add force to object before undefining it
-        Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+        //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.layer = 0;
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null;
