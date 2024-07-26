@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: VHS_1
   m_EditorClassIdentifier: 
   gameName: All along the toon tower
-  gamePath: 
+  gamePath: Games/ToonTower/All along the toon tower
