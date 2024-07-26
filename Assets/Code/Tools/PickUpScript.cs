@@ -10,6 +10,7 @@ public class PickUpScript : MonoBehaviour
     public float throwForce = 500f; //force at which the object is thrown at
     public float pickUpRange = 5f; //how far the player can pickup the object from
     private float rotationSensitivity = 1f; //how fast/slow the object is rotated in relation to mouse movement
+    [SerializeField]
     private GameObject heldObj; //object which we pick up
     private Rigidbody heldObjRb; //rigidbody of object we pick up
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
@@ -19,12 +20,21 @@ public class PickUpScript : MonoBehaviour
 
     //Reference to script which includes mouse movement of player (looking around)
     //we want to disable the player looking around when rotating the object
-    //example below 
-    //MouseLookScript mouseLookScript;
+    //example below
+
+    public FirstPersonController mouseLookScript;
+    float originalSenseValue;
+
+    float XaxisRotation;
+    float YaxisRotation;
+
+    Vector3 startTapeRotation = new Vector3(0, -130, -100);
+
     void Start()
     {
         LayerNumber = LayerMask.NameToLayer("HoldLayer"); //if your holdLayer is named differently make sure to change this ""
 
+        originalSenseValue = mouseLookScript.mouseSensitivity;
         //mouseLookScript = player.GetComponent<MouseLookScript>();
     }
 
@@ -35,8 +45,14 @@ public class PickUpScript : MonoBehaviour
 
         if (heldObj == null) //if currently not holding anything
         {
+
             if (ray.transform.gameObject.TryGetComponent(out TapeBox box))
             {
+                if (currentOutline == box.GetComponent<SetOutline>()) return;
+
+                if (currentOutline && currentOutline != box.GetComponent<SetOutline>())
+                    currentOutline.Show(false);
+
                 currentOutline = box.GetComponent<SetOutline>();
                 currentOutline.Show(true);
             }
@@ -44,6 +60,8 @@ public class PickUpScript : MonoBehaviour
             {
                 if(currentOutline)
                     currentOutline.Show(false);
+
+                currentOutline = null;
             }
         }
         else
@@ -95,12 +113,13 @@ public class PickUpScript : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (canDrop == true)
+            if (heldObj != null && canDrop == true)
             {
                 StopClipping(); //prevents object from clipping through walls
-                DropObject();
+                //DropObject();
+                ThrowObject();
             }
         }
 
@@ -125,6 +144,10 @@ public class PickUpScript : MonoBehaviour
             heldObjRb.isKinematic = true;
             heldObjRb.transform.parent = holdPos.transform; //parent object to holdposition
             heldObj.layer = LayerNumber; //change the object layer to the holdLayer
+
+
+            heldObj.transform.Rotate(startTapeRotation);
+
             //make sure object doesnt collide with player, it can cause weird bugs
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         }
@@ -145,27 +168,44 @@ public class PickUpScript : MonoBehaviour
     }
     void RotateObject()
     {
+
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            mouseLookScript.mouseSensitivity = originalSenseValue;
+        }
+
         if (Input.GetKey(KeyCode.R))//hold R key to rotate, change this to whatever key you want
         {
             canDrop = false; //make sure throwing can't occur during rotating
 
             //disable player being able to look around
-            //mouseLookScript.verticalSensitivity = 0f;
-            //mouseLookScript.lateralSensitivity = 0f;
+            mouseLookScript.mouseSensitivity = 0f;
 
-            float XaxisRotation = Input.GetAxis("Mouse X") * rotationSensitivity;
-            float YaxisRotation = Input.GetAxis("Mouse Y") * rotationSensitivity;
+            XaxisRotation = Input.GetAxis("Mouse X") * rotationSensitivity;
+            YaxisRotation = Input.GetAxis("Mouse Y") * rotationSensitivity;
             //rotate the object depending on mouse X-Y Axis
             heldObj.transform.Rotate(Vector3.down, XaxisRotation);
             heldObj.transform.Rotate(Vector3.right, YaxisRotation);
+
+            return;
         }
         else
         {
             //re-enable player being able to look around
-            //mouseLookScript.verticalSensitivity = originalvalue;
-            //mouseLookScript.lateralSensitivity = originalvalue;
             canDrop = true;
         }
+
+        XaxisRotation = Input.GetAxisRaw("Horizontal") * 0.8f * rotationSensitivity;
+        YaxisRotation = Input.GetAxisRaw("Vertical") * 0.8f * rotationSensitivity;
+
+        heldObj.transform.Rotate(Vector3.right, XaxisRotation);
+        heldObj.transform.Rotate(Vector3.back, YaxisRotation);
+
+        if (Input.GetKey(KeyCode.Q))
+            heldObj.transform.Rotate(Vector3.up, 0.8f * rotationSensitivity);
+
+        if (Input.GetKey(KeyCode.E))
+            heldObj.transform.Rotate(Vector3.down, 0.8f * rotationSensitivity);
     }
     void ThrowObject()
     {

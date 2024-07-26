@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a9e2ad0abefb48beb9da0ca782122fd, type: 3}
   m_Name: VHS_1
   m_EditorClassIdentifier: 
-  gameName: TestGame
+  gameName: All along the toon tower
   gamePath: 
