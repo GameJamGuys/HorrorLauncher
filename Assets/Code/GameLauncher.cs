@@ -14,6 +14,11 @@ public class GameLauncher : PersistentSingleton<GameLauncher>
         isGamePlay = false;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Delete)) ExitLauncher();
+    }
+
     private void OnApplicationFocus(bool focus)
     {
         CheckForPause(focus);
@@ -36,11 +41,12 @@ public class GameLauncher : PersistentSingleton<GameLauncher>
 
     public void LaunchGame(VideoTapeSO data)
     {
-        Process proc = Process.Start(Environment.CurrentDirectory + @"\Games\" + data.gamePath);
+        Process.Start(Environment.CurrentDirectory + @"\Games\" + data.gamePath);
         
-
         isGamePlay = true;
     }
 
     public void RestartMenu() => SceneManager.LoadScene(0);
+
+    public void ExitLauncher() => Application.Quit();
 }
