@@ -9,6 +9,9 @@ public class GameLauncher : PersistentSingleton<GameLauncher>
     public bool isPause;
     public bool isGamePlay;
 
+    [SerializeField]
+    Animator fadeAnim;
+
     private void Start()
     {
         isGamePlay = false;
@@ -39,11 +42,13 @@ public class GameLauncher : PersistentSingleton<GameLauncher>
         Time.timeScale = isPause ? 1 : 0;
     }
 
-    public void LaunchGame(VideoTapeSO data)
+    public async void LaunchGame(VideoTapeSO data)
     {
-        Process.Start(Environment.CurrentDirectory + @"\Games\" + data.gamePath);
-        
+        fadeAnim.SetTrigger("fade");
         isGamePlay = true;
+
+        await System.Threading.Tasks.Task.Delay(1200);
+        Process.Start(Environment.CurrentDirectory + @"\Games\" + data.gamePath);
     }
 
     public void RestartMenu() => SceneManager.LoadScene(0);

@@ -7,15 +7,17 @@ public class GameInfoUI : MonoBehaviour
 {
     [SerializeField] GameObject holder;
     [SerializeField] TMP_Text gameTitle;
-    // Start is called before the first frame update
+    
     void Start()
     {
-        
+        HideGameInfo();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetGameInfo(VideoTapeSO data)
     {
-        
+        holder.SetActive(true);
+        gameTitle.text = data.gameName;
     }
+
+    public void HideGameInfo() => holder.SetActive(false);
 }

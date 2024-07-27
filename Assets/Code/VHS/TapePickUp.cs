@@ -24,6 +24,8 @@ public class TapePickUp : MonoBehaviour
 
     public bool isHold;
 
+    [SerializeField] GameInfoUI gameInfo;
+
     Vector3 startTapeRotation = new Vector3(170, 180, 90);
 
     void Start()
@@ -48,6 +50,7 @@ public class TapePickUp : MonoBehaviour
                     {
                         PickUpObject(hitInfo.transform.gameObject);
                         Debug.Log("Pick up " + box.TapeData.gameName);
+                        gameInfo.SetGameInfo(box.TapeData);
                     }
                 }
                 else
@@ -68,6 +71,7 @@ public class TapePickUp : MonoBehaviour
                 DropObject();
 
                 isHold = false;
+                gameInfo.HideGameInfo();
                 //ThrowObject();
             }
         }
@@ -97,6 +101,7 @@ public class TapePickUp : MonoBehaviour
             heldObj.transform.Rotate(startTapeRotation);
 
             isHold = true;
+
             //make sure object doesnt collide with player, it can cause weird bugs
             //Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         }
