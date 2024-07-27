@@ -26,7 +26,7 @@ public class TapePickUp : MonoBehaviour
 
     [SerializeField] GameInfoUI gameInfo;
 
-    Vector3 startTapeRotation = new Vector3(170, 180, 90);
+    Vector3 startTapeRotation = new Vector3(150, 180, 90);
 
     void Start()
     {
