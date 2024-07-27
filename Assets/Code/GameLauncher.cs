@@ -47,7 +47,7 @@ public class GameLauncher : PersistentSingleton<GameLauncher>
         fadeAnim.SetTrigger("fade");
         isGamePlay = true;
 
-        await System.Threading.Tasks.Task.Delay(1200);
+        await System.Threading.Tasks.Task.Delay(300);
         Process.Start(Environment.CurrentDirectory + @"\Games\" + data.gamePath);
     }
 

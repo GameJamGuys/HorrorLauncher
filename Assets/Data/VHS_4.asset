@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: VHS_4
   m_EditorClassIdentifier: 
   gameName: Sensation
-  gamePath: Sensation/Sensation
+  gamePath: Sensation/Sensation.exe
