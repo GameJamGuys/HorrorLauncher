@@ -122,8 +122,6 @@ public class TapePickUp : MonoBehaviour
     }
     void RotateObject()
     {
-
-
         if (Input.GetKey(KeyCode.R))//hold R key to rotate, change this to whatever key you want
         {
             canDrop = false; //make sure throwing can't occur during rotating
@@ -147,14 +145,14 @@ public class TapePickUp : MonoBehaviour
         XaxisRotation = Input.GetAxisRaw("Horizontal") * 0.8f * rotationSensitivity;
         YaxisRotation = Input.GetAxisRaw("Vertical") * 0.8f * rotationSensitivity;
 
-        heldObj.transform.Rotate(Vector3.right, XaxisRotation);
-        heldObj.transform.Rotate(Vector3.back, YaxisRotation);
+        heldObj.transform.Rotate(Vector3.forward, XaxisRotation);
+        heldObj.transform.Rotate(Vector3.left, YaxisRotation);
 
         if (Input.GetKey(KeyCode.Q))
-            heldObj.transform.Rotate(Vector3.up, 0.8f * rotationSensitivity);
+            heldObj.transform.Rotate(Vector3.down, 0.8f * rotationSensitivity);
 
         if (Input.GetKey(KeyCode.E))
-            heldObj.transform.Rotate(Vector3.down, 0.8f * rotationSensitivity);
+            heldObj.transform.Rotate(Vector3.up, 0.8f * rotationSensitivity);
     }
     void ThrowObject()
     {
