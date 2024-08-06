@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: VHS_1
   m_EditorClassIdentifier: 
   gameName: All along the toon tower
-  gamePath: ToonTower/All along the toon tower.exe
+  gamePath: All along the toon tower/All along the toon tower.exe
   gameDescription: Escape from a cartoonish cyclical existential horror.

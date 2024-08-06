@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.1341472, b: 0.121078566, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -824,7 +824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &187978167
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1761,17 +1761,17 @@ PrefabInstance:
     - target: {fileID: 7403241908061965966, guid: 175d4ad9203aa4598ba16b905ff7992e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03847
+      value: -0.032
       objectReference: {fileID: 0}
     - target: {fileID: 7403241908061965966, guid: 175d4ad9203aa4598ba16b905ff7992e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11138
+      value: 0.1115
       objectReference: {fileID: 0}
     - target: {fileID: 7403241908061965966, guid: 175d4ad9203aa4598ba16b905ff7992e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.04809
+      value: 0.0426
       objectReference: {fileID: 0}
     - target: {fileID: 7403241908061965966, guid: 175d4ad9203aa4598ba16b905ff7992e,
         type: 3}
@@ -4166,8 +4166,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2566914047
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.59607846}
+    rgba: 4026531839
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.9372549}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameName: "No, i'm not a human i'm a \u027F\u0332\u033B \u028D\u0301 \u03C1\u0307\u030E\u053E\u032C\u034E\u054F\u032F\u0366
     \u0535\u0357\u0327_\u0345_\u031D\u0306\u021D\u030D\u036F\u0550\u0361\u0342"
-  gamePath: NotAHuman/ImNotAHuman.exe
+  gamePath: ImNotAHuman/ImNotAHuman.exe
   gameDescription: An intimate story about a disaster and guests from underground.
