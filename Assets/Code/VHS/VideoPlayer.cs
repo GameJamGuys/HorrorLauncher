@@ -7,12 +7,15 @@ public class VideoPlayer : MonoBehaviour
 {
     SetOutline setOutline;
 
+    Outline outline;
+
     [SerializeField]
     TapePickUp tapePickUp;
 
     private void Start()
     {
         setOutline = GetComponent<SetOutline>();
+        outline = GetComponent<Outline>();
     }
 
     public void InsertTape(VideoTapeSO tapeData)
@@ -22,14 +25,19 @@ public class VideoPlayer : MonoBehaviour
         GameLauncher.Instance.LaunchGame(tapeData);
     }
 
+    private void Update()
+    {
+        setOutline.Show(tapePickUp.isHold);
+    }
+
     private void OnMouseEnter()
     {
         if (tapePickUp.isHold)
-            setOutline.Show(true);
+            outline.OutlineColor = Color.green;
     }
 
     private void OnMouseExit()
     {
-        setOutline.Show(false);
+        outline.OutlineColor = Color.cyan;
     }
 }
