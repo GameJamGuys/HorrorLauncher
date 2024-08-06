@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2296,8 +2296,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Q <  W  > E\n A  S  D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6207d000c19a8ba40a04a446b386e586, type: 2}
+  m_sharedMaterial: {fileID: 6936928875775870207, guid: 6207d000c19a8ba40a04a446b386e586,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2411,8 +2412,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 498.9133, y: -499.6051}
-  m_SizeDelta: {x: 800.9879, y: 271.4684}
+  m_AnchoredPosition: {x: 425.94687, y: -499.6051}
+  m_SizeDelta: {x: 942.2626, y: 271.4684}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1093612058
 MonoBehaviour:
@@ -2436,8 +2437,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: An intimate story about a disaster and guests from underground.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6207d000c19a8ba40a04a446b386e586, type: 2}
+  m_sharedMaterial: {fileID: 6936928875775870207, guid: 6207d000c19a8ba40a04a446b386e586,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3113,8 +3115,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 489.01642, y: -187.93542}
-  m_SizeDelta: {x: 847.1929, y: 271.4684}
+  m_AnchoredPosition: {x: 414.30438, y: -187.93542}
+  m_SizeDelta: {x: 996.6169, y: 271.4684}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1324128693
 MonoBehaviour:
@@ -3138,8 +3140,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: I ate old man's liver now this b***ch is mine
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6207d000c19a8ba40a04a446b386e586, type: 2}
+  m_sharedMaterial: {fileID: 6936928875775870207, guid: 6207d000c19a8ba40a04a446b386e586,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3169,7 +3172,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 5
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4135,7 +4138,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 484, y: -293}
-  m_SizeDelta: {x: 496.8683, y: 106.7198}
+  m_SizeDelta: {x: 636.1727, y: 106.7198}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1735703867
 MonoBehaviour:
@@ -4159,8 +4162,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Click on VHS player
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6207d000c19a8ba40a04a446b386e586, type: 2}
+  m_sharedMaterial: {fileID: 6936928875775870207, guid: 6207d000c19a8ba40a04a446b386e586,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
