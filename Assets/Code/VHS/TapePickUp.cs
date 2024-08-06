@@ -26,7 +26,8 @@ public class TapePickUp : MonoBehaviour
 
     [SerializeField] GameInfoUI gameInfo;
 
-    Vector3 startTapeRotation = new Vector3(150, 180, 90);
+    [SerializeField]
+    Quaternion startTapeRotation;
 
     void Start()
     {
@@ -98,7 +99,7 @@ public class TapePickUp : MonoBehaviour
             heldObjRb.transform.parent = holdPos.transform; //parent object to holdposition
             heldObj.layer = LayerNumber; //change the object layer to the holdLayer
 
-            heldObj.transform.Rotate(startTapeRotation);
+            heldObj.transform.rotation = startTapeRotation;
 
             isHold = true;
 

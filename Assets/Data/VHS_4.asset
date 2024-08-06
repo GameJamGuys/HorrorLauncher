@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameName: Sensation
   gamePath: Sensation/Sensation.exe
+  gameDescription: Become a reporter for Japanese television and do not lose your
+    "Sensation"

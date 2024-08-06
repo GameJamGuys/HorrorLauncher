@@ -28,4 +28,9 @@ public class TapeBox : MonoBehaviour
     {
         setOutline.Show(false);
     }
+
+    public void Unpack()
+    {
+
+    }
 }

@@ -7,7 +7,8 @@ public class GameInfoUI : MonoBehaviour
 {
     [SerializeField] GameObject holder;
     [SerializeField] TMP_Text gameTitle;
-    
+    [SerializeField] TMP_Text gameDesc;
+
     void Start()
     {
         HideGameInfo();
@@ -17,6 +18,7 @@ public class GameInfoUI : MonoBehaviour
     {
         holder.SetActive(true);
         gameTitle.text = data.gameName;
+        gameDesc.text = data.gameDescription;
     }
 
     public void HideGameInfo() => holder.SetActive(false);

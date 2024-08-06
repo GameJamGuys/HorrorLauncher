@@ -7,4 +7,6 @@ public class VideoTapeSO : ScriptableObject
 {
     public string gameName;
     public string gamePath;
+    [TextArea]
+    public string gameDescription;
 }
